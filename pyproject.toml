@@ -1,0 +1,93 @@
+[project]
+name = "calendar_planning"
+version = "0.1.0"
+description = "Example of a calendar planning application."
+authors = [{ name = "Alexander", email = "alx.korvus@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = [
+    "django==5.2.3",
+    "djangorestframework==3.16.0",
+    "drf-spectacular==0.28.0",
+    "markdown==3.8.2",
+    "django-filter==25.1",
+    "mysqlclient==2.2.7",
+    "gunicorn==23.0.0",
+    "python-dotenv==1.1.1",
+    # for testing
+    "faker",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pip-tools",
+    "pipdeptree",
+
+    # linters
+    "mypy",
+    "black",
+    "isort",
+    "flake8",
+    "flake8-docstrings",
+    "flake8-bugbear",
+    "flake8-pie",
+    "flake8-pyproject",
+
+    # stubs
+    "django-stubs",
+    "djangorestframework-stubs",
+]
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.mypy]
+exclude = ["venv/", ".venv/", "build/", "dist/"]
+namespace_packages = true
+explicit_package_bases = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+follow_imports = "normal"
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "core.settings"
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.flake8]
+exclude = [
+    "venv",
+    ".venv",
+    "__pycache__",
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".vscode",
+    # django
+    "migrations",
+    "settings.py",
+]
+per-file-ignores = [
+    "*/__init__.py:F401,D104",
+]
+max-line-length = 79
+max-complexity = 10
+docstring-convention = "google"
+select = [
+    "B",   # flake8-bugbear
+    "E",   # pycodestyle: Ошибки
+    "W",   # pycodestyle: Предупреждения
+    "F",   # pyflakes
+    "PIE", # flake8-pie
+    "D",   # pydocstyle: flake8-docstrings
+]
+ignore = ["W503", "E704"]

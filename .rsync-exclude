@@ -1,0 +1,18 @@
+# rsync -rv --delete --exclude-from='.rsync-exclude' . admin@192.168.122.96:/home/admin/planning/
+
+# directories
+.venv/
+.vscode/
+.mypy_cache/
+.git/
+__pycache__/
+*.egg-info/
+
+# files
+update_requirements.sh
+requirements.dev.txt
+pyproject.toml
+.python-version
+.rsync-exclude
+.env.example
+.gitignore
