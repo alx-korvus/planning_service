@@ -1,6 +1,6 @@
 """Admin panel settings for app_plan."""
 
-from typing import Any, Generic, Sequence, Type, TypeVar
+from typing import Any, Generic, Type, TypeVar
 
 from django import forms
 from django.contrib import admin
@@ -10,8 +10,8 @@ from django.db import models
 from django.forms import Textarea
 from django.http.request import HttpRequest
 
-from app_plan.forms import StageInlineForm
-from app_plan.formsets import StageInlineFormSet
+from app_plan.forms import StageInlineForm, TaskInlineForm
+from app_plan.formsets import StageInlineFormSet, TaskInlineFormSet
 from app_plan.models import (
     Artifact,
     Contact,
@@ -102,6 +102,8 @@ class TaskInline(admin.TabularInline):
     """Inline Task representation."""
 
     model = Task
+    form = TaskInlineForm
+    formset = TaskInlineFormSet
     extra = 1
     fields = ("name", "assignee", "date_start", "date_end", "status")
 

@@ -11,3 +11,13 @@ class StageInlineFormSet(BaseInlineFormSet):
         kwargs = super().get_form_kwargs(index)
         kwargs["parent_project"] = self.instance
         return kwargs
+
+
+class TaskInlineFormSet(BaseInlineFormSet):
+    """Custom formset for TaskInline admin model."""
+
+    def get_form_kwargs(self, index: int | None) -> dict:
+        """Add parent Project to kwargs for a form."""
+        kwargs = super().get_form_kwargs(index)
+        kwargs["parent_project"] = self.instance.project
+        return kwargs
