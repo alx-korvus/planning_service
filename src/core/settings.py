@@ -42,7 +42,6 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
     "localhost",
-    "192.168.122.96",  # VM alt 11
 ] + getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
 

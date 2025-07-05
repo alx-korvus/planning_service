@@ -9,6 +9,7 @@ __pycache__/
 *.egg-info/
 
 # files
+*.md
 update_requirements.sh
 requirements.dev.txt
 pyproject.toml
